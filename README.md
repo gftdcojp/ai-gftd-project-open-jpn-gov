@@ -71,6 +71,35 @@ did:web:open-jpn-gov.gftd.ai:independent:jinji       # 人事院
 
 全文は [`worker/src/roster.ts`](./worker/src/roster.ts).
 
+## DoDAF v2 / BPMN / DMN / Forms
+
+本リポは **DoDAF v2.02 準拠**のアーキテクチャ記述 + 実行成果物を同梱します。
+
+| DoDAF view | File |
+|---|---|
+| AV-1 Overview & Summary | [`dodaf/AV-1.json`](./dodaf/AV-1.json) |
+| OV-1 High-Level Operational Concept | [`dodaf/OV-1.json`](./dodaf/OV-1.json) |
+| OV-5b Operational Activity Model | [`dodaf/OV-5b.json`](./dodaf/OV-5b.json) |
+| OV-6a Operational Rules Model | [`dodaf/OV-6a.json`](./dodaf/OV-6a.json) |
+| CV-2 Capability Taxonomy | [`dodaf/CV-2.json`](./dodaf/CV-2.json) |
+| SV-1 Systems Interface Description | [`dodaf/SV-1.json`](./dodaf/SV-1.json) |
+
+| BPMN 2.0 | File | Process key |
+|---|---|---|
+| Search Law | [`bpmn/search-law.bpmn`](./bpmn/search-law.bpmn) | `searchLaw` |
+| Resolve Ministry | [`bpmn/resolve-ministry.bpmn`](./bpmn/resolve-ministry.bpmn) | `resolveMinistry` |
+
+| DMN 1.3 | File | Decision key |
+|---|---|---|
+| Law Type Classification | [`dmn/law-type-classification.dmn`](./dmn/law-type-classification.dmn) | `openJpnGov.lawTypeClassification` |
+
+| Camunda Form | File | Form key |
+|---|---|---|
+| Search Law | [`forms/searchLaw.form.json`](./forms/searchLaw.form.json) | `openJpnGov.searchLaw.v1` |
+| Resolve Ministry | [`forms/resolveMinistry.form.json`](./forms/resolveMinistry.form.json) | `openJpnGov.resolveMinistry.v1` |
+
+**Runtime**: `GET /dodaf`, `/dodaf/{viewId}`, `/forms`, `/forms/{formKey}` で閲覧可能。PDS service binding がある時は `ai.gftd.dodafv2.deployView` + `ai.gftd.form.register` に自動投入。
+
 ## 非目標 (MVP)
 
 - 47 都道府県 / 市区町村 roster
